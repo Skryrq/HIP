@@ -6,11 +6,22 @@ using System.Threading.Tasks;
 using HtmlAgilityPack;
 using System.Timers;
 
-class Writer
+public class Writer
 {
 
-
-
+    private readonly string date, pathEC, pathMT, fileTime, fileStrength, fileName, fileTrend;
+    public Writer()
+    {
+        var date = DateTime.Now.ToString("dd/MM/yyyy");
+        this.date = date;
+        this.pathEC = @"C:\Users\Max\Documents\ECONOMICCALENDAR\EC." + date + ".html";
+        this.pathMT = @"C:\Users\Max\AppData\Roaming\MetaQuotes\Terminal\2010C2441A263399B34F537D91A53AC9\MQL4\Files\";
+        this.fileTime = @"time." + date + ".txt";
+        this.fileStrength = @"strength." + date + ".txt";
+        this.fileTrend = @"trend." + date + ".txt";
+        this.fileName = @"name." + date + ".txt";
+    }
+    private static string URL = "https://fr.investing.com/currencies/eur-usd";
 
     public static int i = 0;
     public static string[] name = new string[100];
@@ -20,19 +31,7 @@ class Writer
     public static string[] strength = new string[100];
     public static int?[] total = new int?[100];
     public static int? dailytotal = 0;
-
-    public static void Write(string date)
-    {
-        private readonly string date = DateTime.UtcNow.Date.ToString("dd/MM/yyyy");
-    private readonly string URL = "https://fr.investing.com/currencies/eur-usd",
-
-    hour = DateTime.Now.ToString("HH:mm"),
-    pathEC = @"C:\Users\Max\Documents\ECONOMICCALENDAR\EC." + date + ".html",
-    pathMT = @"C:\Users\Max\AppData\Roaming\MetaQuotes\Terminal\2010C2441A263399B34F537D91A53AC9\MQL4\Files\",
-    fileTime = @"time." + date + ".txt",
-    fileStrength = @"strength." + date + ".txt",
-    fileTrend = @"trend." + date + ".txt",
-    fileName = @"name." + date + ".txt";
+        
     private void HTMLwriter()
     {
         HtmlWeb web = new HtmlWeb();
@@ -244,15 +243,13 @@ class Writer
         Console.WriteLine();
     }
 
-
-    HTMLwriter();
+    public void Write()
+    {
+    this.HTMLwriter();
         {
-
-
-            Title(); Currency(); Time(); Trend(); Strength(); Total(); DailyTotal();
-            WriteConsole();
-}
+            this.Title(); this.Currency(); this.Time(); this.Trend(); this.Strength(); this.Total(); this.DailyTotal();
+            this.WriteConsole();
+        }
     }
-    
-}
+}    
 

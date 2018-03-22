@@ -18,7 +18,8 @@ public class SetTimer
     public static void setTimer()
     {
         Console.WriteLine("Started at {0:HH:mm:ss}", DateTime.Now);
-        Writer.Write();
+        var writer = new Writer();
+        writer.Write(); 
         setTimer2();
     }
 
@@ -53,7 +54,8 @@ public class SetTimer
         }
         if (s != 1)
         {
-            Writer.Write();
+            var writer = new Writer();
+            writer.Write();
             {
                 string now2 = DateTime.Now.ToString("HH:mm:ss");
                 Console.WriteLine("Requested at {0:HH:mm:ss} - updated at " + now2, e.SignalTime);

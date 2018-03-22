@@ -110,7 +110,8 @@ public class Sample
         switch (readedKey.Key)
         {
             case ConsoleKey.D1:
-                Writer.Write();
+                var writer = new Writer();
+                writer.Write();
                 { Main(args); }
                 break;
 
